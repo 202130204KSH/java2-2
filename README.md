@@ -135,6 +135,43 @@ opr1?opr2?opr3?
 비트 시프트 연산:    
     비트를 오른쪽이나 왼쪽으로 이동  
 
+**switch문**  
+switch문은 식과 case 문의 값과 비교  
+    case의 비교 값과 일치하면 해당 case의 실행문장 수행  
+case의 비교 값과 일치하는 것이 없으면 default 문 실행  
+
+switch뮌에서 breadk 문은 중요하다 어떤 case의 실행문장이 실행되고 만난 braek문은 switch문을 벗어나도록 지시한다  
+만약에 break문이 없다면 case문의 실행문장으로 break문을 만날 때 까지 계속 실행하여 무한반복한다
+
+```java
+char grade = "B";
+Switch(grade){
+case A
+    System.out.println("축하합니다");
+    break;
+case B
+    System.out.println("좋아요");
+    break;
+case C
+    System.out.println("노력하세요");
+    break;
+case D
+    System.out.println("탈락입니다");
+    break;
+
+}
+```
+**for문**  
+반복문에서 가장 많이 사용되는 반복문  
+for(초기문;반복문;반복후작업){  
+    작업문  
+}  
+작업문은 for문이 반복되는 동안 매번 실행되며 작업문이 하나의 문장인 경우 중괄호가 필요하지 않다  
+초기문은 for문의 조건식에서 사용되는 변수를 초기화한다  
+변수가 조건식의 논리변수,논리연산에서 ture로 있는 한 작업문은 계속해서 반복된다
+조건식의 결과가 false가 되면 for문을 벗어난다.
+
+
 
 ## 3월 22일  
     프로젝트 생성,이를 복사하여 기존 프로젝트에 붙여넣었다.  
