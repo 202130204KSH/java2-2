@@ -1,5 +1,292 @@
 ## 김상혁 202130204
 
+## 4월 05일  
+**for-each문**  
+for문의 변형으로 배열이나 나열의 크기만큼 루프를 돌면서 각 원소를 순차적으로 접근한다
+
+**2차원 배열**
+2차원 배열 선언시 각 원소를 동시에 초기화한다.  
+```java
+int intArray[][] = {{0,1,2},{3,4,5},{6,7,8}};
+char charArray[][] = {{a,b,c},{d,e,f}};
+double doubleArray[][] = {{0.01,0.01},{0.03,0.04}};
+```
+
+**메소드의 배열 리턴**  
+    배열 리턴  
+        1,배열의 레퍼런스만 리턴
+
+    메소드의 리턴 타입
+        1,리턴하는 배열 타입과 리턴받는 배열의 타입이 일치
+        2,리턴 타입에 배열의 크기를 지정하지 않음
+
+```java
+    int [] intArray; // makeArray()의 리턴타입과 동일한 타입의 배열 선언 
+        intArray = makeArray(); //makeArray()메소드가 리턴하는 배열을 받음
+```
+
+**자바의 예외처리**
+    예외
+        실행중 오작동이나 악영향을 미치는 예상치 못한 상황 발생
+            1,자바에서는 실행중 발생하는 에러를 예외로 처리
+        실행중 예외가 발생하면
+            1,자바플랫폼은 응용프로그램이 예외를 처리하도록 호출
+                -응용 프로그램이 예외를 처리하지 않으면 프로그램을 강제종료함
+        예외 발생 경우
+            1,정수를 0으로 나누는 경우
+            2,배열의 크기보다 큰 인덱스로 배열의 원소를 접근하는 경우
+            3,정수를 읽는 코드가 실행되고 있을 때 사용자가 문자를 입력한 경우
+
+ ```java
+    try{
+        예외가 발생할 가능성이 있는 실행분(try블록)
+    }
+    catch(처리할 예외타입 선언){
+        예외처리문
+    }finally
+        finally 불록문
+```
+```java
+import java.util.Scanner;
+public class EX3_14 {
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        int end;
+        int sor;
+        
+        System.out.println("나뉨수를 입력하세요");
+        end = scanner.nextInt();
+        System.out.println("나눔수를 입력하세요");
+        sor = scanner.nextInt();
+        try{
+            System.out.println(end+"를"+sor+"로 나누면 몫은"+end/sor+"입니다");
+        }
+        catch(ArithmeticException e){
+            System.out.println("0으로 나눌 수 없습니다");
+        }
+        finally{
+            scanner.close();
+        }
+
+    }
+}
+```
+
+
+**자바의 개체 특성:상속**  
+상속은 상위 개체의 속성이 하위 개체에 물려져서 하위 개체가 상위 개체의 속성을 모두 가지는 관계이다.  
+
+**다향성**  
+    1,같은 이름의 메소드가 클래스 혹은 객체에 따라 다르게 구현되는 것  
+    2,다향성 사례  
+        -메소드 오버로딩:한 클래스 내에서 같은 이름이지만 다르게 작동하는 여러 메소드  
+        -메소드 오버리이딩:슈퍼 클래스의 메소드를 동일한 이름으로 서브 클래스마다 다르게 구현  
+
+**객체 지향 언어의 목적**  
+    소프트웨어의 생산성 향상  
+        1,컴퓨터 산업 발전에 따라 소프트웨어의 생명주기 단축  
+            -소프트웨어를 빠른 속도로 생상할 필요성 중대  
+        2,객체 지향 언어  
+            -상속,다향성,객체,캡슐화 등 소프트웨어 재사용을 위한 여러 장치 내장  
+            -소프트웨어 재사용과 부분 수정 빠름  
+            -부분 수정을 통해 소프트웨러를 작성하는 부담을 대폭 줄일 수 있음.  
+    실세계에 대한 쉬운 모델링  
+        1,실세계의 일을 보다 쉽게 프로그래밍 할 수 있는 객체지향 언어 필요.  
+
+**클래스와 객체**  
+    클래스  
+        1,객체의 속성과 행위 선언  
+        2,객체의 설계도 혹은 틀  
+    객체  
+        1,클래스의 틀로 직어낸 실체  
+            -프로그램 실행 중에 생성되는 실체  
+            -메모리 공간을 갖는 구체적인 실체  
+            -인스턴스 라고도 부름  
+
+**자바 클래스 구성**  
+    클래스  
+        1,class키워드로 선언
+        2,멤버:클래스 구성요소  
+            -필드(멤버변수)와 메소드(멤버함수)  
+        3,클래스에 대한 public접근 지정:다른 모든 클래스에서 클래스 사용 허락  
+        4,멤버에 대한 public접근 지정:다른 모든 클래스에게 멤버 접근 허용  
+```java
+    public class Circle{
+        int radius;
+        String name;
+
+        public double getArea(){
+            return 3.14*radius*radius;
+        }
+
+        public static void main(string[]args){
+            Circle pizza;//래퍼런스 변수 pizza 선언 : 이 선언문으로 Circle 객체는 생성하지 않음, 변수 pizza 는 Circle 타입의 객체를 가리키는 레퍼런스 변수일 뿐 객체 자체는 아님 이를 객체이름 이라고도 부름
+            pizza.radius=10;
+            pizza.name="자바피자";
+            double area = pizza;
+            
+            Circle donut = new Circle();
+            donut.radius = 2;
+            donut.name= "자바도넛";
+            area = donut.getArea();
+            System.out.println(donut.name+"면적은"+area);
+        }
+    }
+```
+
+```java
+public class Circle {
+    int rad;
+    String name;
+    
+    public Circle(){
+        rad = 1; name = "";
+    }
+
+    public Circle(int r, String n){
+        rad = r;
+        name = n;
+    }
+
+    public double getArea(){
+        return 3.14*rad*rad;
+    }
+    public static void main(String[] args){
+        Circle pizza = new Circle(10, "피자");
+        double area = pizza.getArea();
+        System.out.println(pizza.name+"면적"+area);
+
+        Circle donut = new Circle();
+        donut.name = "도넛";
+        area = donut.getArea();
+        System.out.println(donut.name+"면적"+area);
+    }
+}
+```  
+
+**생성자**  
+    기본생성자  
+        -매개변수가 없고 또한 실행코드가 없어 아무 일도 하지 않는 단순 리턴하는 생성자이다  
+    기본생성자가 자동으로 생성되는 경우  
+        -생성자가 없는 클래스는 존재할 수 없으므로 클래스 생성자가 선언되어있지 않으면 컴파일러가 기본생성자를 자동으로 생성한다.  
+    기본생성자가 자동으로 생성되지 않는 경우  
+        -생성자가 하나라도 존재하는 클래스에는 컴파일러가 기본 생성자를 임의로 삽입해 주지 않는다. 다음 new 문장은 매개변수를 가진 Circle(int r) 생성자를 호출한다  
+
+```java
+public class Book{
+    String ti;
+    String aut;
+
+    public Book(String t){
+        ti=t;
+        aut="적자미상";
+    }
+    public Book(String t,String a){
+        ti=t;
+        aut=a;
+    }
+    public static void main(String[]args){
+        Book littlePrince = new Book("어린왕자","셰익스피어");
+        
+        Book loveStory =  new Book("춘향전");
+        System.out.println(littlePrince.ti+""+littlePrince.aut);
+        System.out.println(loveStory.ti+""+loveStory.aut);
+    }
+}
+```  
+
+**this 레퍼런스**  
+    1,this  
+        -객체 자신에 대한 레퍼런스  
+            -컴파일러에 의해 자동으로 관리됨 따라서 개발자는 사용하기만 하면 된다.  
+
+```java
+    public class Circle{
+        int radius;
+        public Circle(int radius){
+            this.radius=radius;
+        }
+        public static void main(){
+            Circle ob1 = new Circle(1);
+            Circle ob2 = new Circle(2);
+            Circle ob3 = new Circle(3);
+
+            ob1.set(4);
+            ob2.set(5);
+            ob3.set(6);
+        }
+    }
+```  
+    2,this()로 다른 생성자 호출  
+        -같은 클래스의 다른 생성자 호출  
+        -생성자 내에서만 사용 가능  
+        -생성자 코드의 제일 처음에 있어야 함  
+
+**객체 배열**  
+    1,레퍼런스를 원소로 갖는 배열  
+      
+**배열 선언 및 생성**  
+    1,배열에 대한 레퍼런스 선언  
+    2,레퍼런스 배열 선언  
+    3,객체생성  
+  
+**메소드**  
+    메소드는 C/C++의 함수와 동일  
+    자바의 모든 메소드는 반드시 클래스 안에 있어야함  
+  
+    접근지정자  
+        -다른 클래스에서 메소드를 접근할 수 있는지 여부 선언  
+        -public,private,protected,디폴트  
+    리턴타입  
+        -메소드가 리턴하는 값이 데이터 타입  
+
+**인자전달**  
+    매개 변수가 byte,int,double등 기본 타입으로 선언되었을 때  
+        -호출자가 건네는 값이 매개 변수에 복사되어 전달,실인자 값은 변경되지 않음  
+    배달 레퍼런스만 매개 변수에 전달  
+        -배열 통째로 전달되지 않음  
+    객체가 전달되는 경우와 동일  
+        -매개 실인자의 배열 공유  
+
+**메소드 오버로딩**  
+    오버로딩  
+        한 클래스 내에서 두개 이상의 이름이 같은 메소드 작성  
+            -메소드 이름이 동일하여야 함  
+            -매개 변수와의 개수가 서로 다르거나 타입이 서로 달라야함  
+            -리턴 타입은 오버로딩과 관련이 없음  
+**객체소멸**  
+    1,new에 의해 할당받은 객체와 배열 메모리를 자바 가상 기계로 되돌려 주는 행위  
+    2,소멸된 객체 공간은 가용 메모리에 포함  
+자바에서 사용자 임의로 객체소멸 할 수 없음  
+    1,자바는 객체 소멸 연산자 없음  
+        -객체 생성 연산자 : new  
+    2,객체 소멸은 자바 가상 기계의 고유한 역할  
+    3,자바 개발자에게는 매우 다행스러운 기능  
+        -C/C++에서는 할당 받은 객체를 개발자가 프로그램내에서 삭제해야 함  
+        -C/C++의 프로그램 작성을 어렵게 만드는 원인  
+
+**가비지**  
+    1,가리키는 레퍼런스가 하나도 없는 객체  
+        -더 이상 접근할 수 없어 사용할 수 없게 된 메모리  
+    2,가비지 컬렉션  
+        -자바 가상 기계의 가비지 컬렉터가 자동으로 가비지 수집,반환  
+  
+**가비지 컬렉션**  
+    1,자바 가상 기계가 가비지 자동 회수  
+        -가용 메모리 공간이 일정 이하로 부족해질 때  
+        -가비지를 수거하여 가용 메모리 공간으로 확보  
+    2,가비지 컬렉터에 의해 자동 수행  
+      
+    3,강제 가비지 컬렉션 강제수행  
+        -System 도는 runtime 객체의 gc()메소드 호출  
+            -이 코드는 자바 가상 기계에 강력한 가비지 컬렉션 요청  
+            -그러나 자바 가상 기계가 가비지 컬렉션 시점을 전적으로 판단  
+
+**자바의 패키지 개념**  
+    1,패키지  
+        -상호 관련 있는 클래스 파일을 저장하여 관리하는 디렉터리  
+        -자바 응용 프로그램은 하나 이상의 패키지로 구성  
+
 ## 3월 29일  
 **리리털과 정수 리터럴**    
     리터럴 프로그램에서 직접 표현한 값  
