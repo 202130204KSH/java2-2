@@ -1,4 +1,177 @@
-## 김상혁 202130204
+## 김상혁 202130204  
+
+## 4월 12일  
+**자바의 패키지 개념**  
+
+
+**접근 지정자**  
+    -private  
+    -protected  
+    -public  
+    -접근 지정자 생략  
+
+    클래스나 일부 멤버를 공개하여 다른 클래스에서 접근하도록 허용  
+
+    객체 지향 언어의 캡슐화 정책은 멤버를 보호하는것  
+        -접근 지정은 캡슐화에 묶인 보호를 일부 해제할 목적  
+
+**클래스 접근 지정**  
+    다른 클래스에서 사용하도록 허용할 지 지정  
+    public 클래스  
+        -다른 모든 클래스에게 접근 허용  
+    디폴트 클래스(접근지정자 생략)  
+        -pakage-private라고도 함  
+        같은 패키지의 클래스에만 접근 허용  
+
+**멤버 접근 지정**  
+    public멤버  
+        -패키지에 관계없이 모든 클래스에게 접근 허용  
+    private멤버  
+        -동일 클래스 내에만 접근 허용  
+        -상속 받은 서브 클래스에서 접근 불가  
+    protected멤버  
+        -같은 패키지 내의 다른 모든 클래스에 접근 허용  
+        -상속클래스라면 다른 패키지에 있더라도 접근 허용  
+
+```java
+class Sample{
+    public int a;
+    private int b;
+    int c;
+
+    public class AccessEx{
+        public static void main(String[]ages){
+            Sample sample = new Sample();
+            sample.a=10;
+            sample.b=10;
+            sample.c=10;
+        }
+    }
+}
+```  
+**static 멤버**
+```java
+class StaticSample{
+    int n;
+    void g() {...}
+    static int m;
+    static void f() {...}
+}
+```
+    객체 생성과 non-static 멤버의 생성  
+        -non-static 멤버는 객체가 생성될 때,객체마다 생긴다.  
+
+**static 멤버의 생성**  
+    static 멤버는 클래스당 하나만 생성  
+    객체들에 의해 공유됨  
+```java
+class StaticSample {
+    int n;
+    void g() {...}
+    static int m;
+    static void f() {...}
+}
+```
+
+**static 멤버 사용**  
+    클래스 이름으로 접근 가능  
+    ```java
+        StaticSample.m=3;
+        StaticSample.f();
+    ```
+    객체의 멤버로 접근 가능  
+    ```java
+        StaticSample b1= new StaticSample();
+        b1.m=3;
+        b1.f();
+    ```
+    non-static 멤버는 클래스 이름으로 접근 안 됨  
+    ```java
+       StaticSample.m=5;
+       StaticSample.g();
+    ```
+**final 클래스**  
+클래스 이름 앞에 사용되면 클래스를 상속받을 수 없음을 지정함.  
+
+**final 메소드**  
+메소드 앞에 final이 붙으면 더 이상 오버라이딩 할 수 없음  
+부모 클래스의 특정 메소드를 오버라이징 못하게 하고 상속받아 사용하고자 한다면 final로 지정하면 된다  
+
+**final 필드**  
+자바에서 final로 필드를 선언하면 필드는 상수가 된다.  
+상수 필드는 한번 초기화하면 값을 변경할 수 없다.  
+
+**클래스 상속과 객체**
+상속 선언  
+    -extends 키워드로 선언  
+부모 클래스>슈퍼 클래스  
+
+```java
+class Point {
+    private int x,y;
+    public void set(int x,int y){
+        this.x=x; this.y=y;
+    }
+    public void showPoint(){
+        System.out.println("("+x+","+y+")");
+    }
+}
+class ColorPoint extends Point {
+    private String color;
+    public void setColor(String color) {
+        this.color = color;
+    }
+    public void showColorPoint(){
+        System.out.println(color);
+        showPoint();
+    }
+}
+public class EX5_1 {
+    public static void main(String[]args){
+        Point p = new Point();
+        p.set(1,2);
+        p.showPoint();
+
+        ColorPoint cp = new ColorPoint();
+        cp.set(3,4);
+        cp.setColor("blue");
+        cp.showColorPoint();
+    }
+}
+```
+
+**슈퍼 클래스의 멤버에 대한 다른 서브클래스의 접근**  
+접근 지정자가 지정되어있지 않을 때 디폴드 접근 지정이라 부른다  
+슈퍼 클래스의 디폴트 멤버는 동일한 패키지에 있는 클래스들에게만 접근이 허용된다  
+
+**슈퍼클래스와 슈퍼클래스의 생성자 선택**  
+슈퍼클래스와 서브클래스  
+    -각각 여러개의 생성자 작성 가능  
+
+서브클래스의 객체가 생성될 때  
+    -슈퍼 클래스 생성자 1개와 서브클래스 생성자 1개가 실행  
+
+서브클래스 생성자와 슈퍼클래스의 생성자가 결정되는 방식  
+    1,개발자의 명시적 선택  
+        -서브클래스 개발자가 슈퍼클래스의 생성자 명시적 선택  
+        -super() 키워드를 이용하여 선택  
+    2,컴파일러가 기본 생성자 선택  
+        -서브 클래스 개발자가 슈퍼 클래스의 생성자를 선택하지 않는 경우
+        -컴파일러가 자동으로 슈퍼클래스의 기본 생성자 선택  
+
+**업캐스팅**  
+서브클래스는 슈퍼클래스의 속성을 상속받는다.  
+서브클래스는 슈퍼클래스로 취급할 수 있다.  
+
+서브클래스 객체가 슈퍼클래스 타입으로 변환되는것을 업캐스팅이라 한다  
+
+슈퍼클래스의 레퍼런스가 서브클래스 객체를 가리키도록 치환되는것이 업캐스팅이다  
+
+**다운캐스팅**  
+슈퍼클래스 레퍼런스를 서브클래스 레퍼런스에 대입  
+업캐스팅된 것을 다시 원래대로 되돌리는 것  
+반드시 명시적 타입 변환 지정  
+
 
 ## 4월 05일  
 **for-each문**  
