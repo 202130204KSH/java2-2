@@ -3,6 +3,129 @@
 =======
 ## 김상혁 202130204  
 
+## 4월 19일
+**메소드 오버라이딩**  
+    서브 클래스에서 슈퍼 클래스에 선언된 메소드를 중복 작성하여 슈퍼클래스에 작성된 메소드를 무력화시키고 객체의 주인노릇을 하는것이다  
+    슈퍼클래스에 작성된 메소드의 이름,리턴타입,매개변수 리스트가 모두 같도록 작성되어야 한다  
+ 
+**추상 클래스**  
+    추상 메소드  
+        -abstract키워드와 함께 원헝면 선언되고 코드는 작성되지 않은 코드이다  
+    추상 클래스 선언  
+        -추상 메소드를 최소 한 개 이상 가지고 abstract로 선언된 클래스  
+        -추상 메소드가 없어도 abstract로 선언한 클래스  
+    추상 클래스의 인스턴트를 생성할 수 없다  
+        -응용 프로그램에는 추상 클래스의 인스턴트 객체를 생성할 수 없다  
+    추상 클래스 상속과 구현  
+        -추상 클래스를 상속받으면 추상 클래스가 됨  
+        -서브 클래스도 abstract로 선언해야 함  
+    추상 클래스 구현  
+        -서브 클래스에서 슈퍼 클래스의 추상 메소드 구현  
+        -추상 클래스를 구현한 서브 클래스는 추상 클래스 아님  
+    추상 클래스의 목적  
+        -상속을 위한 슈퍼 클래스로 활용  
+        -서브 클래스에서 추상 메소드 구현  
+        -다향성 실현  
+
+**자바 인터페이스**  
+    -상수는 public static속성이며 속성은 생략 가능하다  
+    -추상 메소드는 속성이 public abstract로 정해져 있으며 생략 가능하다.
+    -default메소드의 접근지정은 public으로 고정되어있으며 생략 가능하다  
+    -private메소드는 인터페이스 내의 다른 메소드에서만 호출 가능하다  
+    -static메소드의 경우 접근 지정이 생략되면 public이며 private로 지정 가능하다  
+    -default,private,static 메소드들은 코드가 작성되어 있어야 한다.  
+    -인터페이스 객체는 생성할 수 없다  
+인터페이스 상속  
+    -인터페이스는 다른 인터페이스를 상속할 수 있다.  
+    -상속시 extends 키워드를 이용하며 PhoneInterface를 상속받아 MobilePhoneInterface인터페이스를 작성한 사례이다.  
+
+    ```java
+    interface MobilePhoneInterface extends PhoneInterface{
+        void sendSMS();
+        void sendiveSMS();
+    }
+    ```
+
+**자바의 패키지 모듈**  
+    패키지  
+        -서로 관련된 클래스와 인터페이스를 컴파일한 클래스 파일들을 묶어놓은 디렉터리  
+        -하나의 응용 프로그램은 한개 이상의 패키지로 작성  
+        -패키지는 jar파일로 압축할 수 있음  
+    모듈  
+        -여러 패키지와 이미지 등의 자원을 모아놓은 컨테이너  
+        -하낭늬 모듈을 하나의 jmod파일에 저장  
+    java9부터 모듀롸 도입  
+        -플랫폼의 모듈화  
+    응용 프로그램의 모듈화  
+        -클래스들은 패키지로 만들고 다시 패키지를 모듈로 만듦  
+
+**자바의 모듈화의 목적**  
+    java9부터 자바 API를 여러 모듈(99개)로 분활  
+        -java88까지는 rj.jar의 한 파일에 모든 API가 저장  
+    응용 프로그램이 실행할 때 까지 꼭 필요한 모듈들로만 실행 환경 구축  
+        -메모리 자원이 열악한 작은 소형 기기에 꼭 필요한 모듈로 구성된 작은 크기의 실행 이미지를 만들기 위함  
+    모듈의 현실  
+        -java9부터 전면적으로 도입  
+        -큰 자바 응용 프로그램에 적합  
+
+**자바 API의 모듈 파일들**
+    자바 JDK에 제공되는 모듈 파일들  
+        -자바가 설치된 jmods디렉터리에 모듈 파일 존재  
+    
+**패키지 만들기**  
+    클래스 파일이 저장되는 위치  
+        -클래스나 인터페이스가 컴파일되면 클래스 파일 생성  
+        클래스 파일은 패키지로 선언된 디렉터리에 저장  
+    패키지 선언  
+        -소스 파일의 맨 앞에 컴파일 후 저장될 패키지 지정  
+
+```java
+public interface PhoneInterface {
+    final int Time = 10000;
+    void sendCall();
+    void receiveCall();
+    default void printLogo() {
+        System.out.println("**Phone**");
+    }    
+}
+
+class samsungPhone implements PhoneInterface {
+    @Override
+    public void sendCall(){
+        System.out.println("띠리리리링");
+    }
+    @Override
+    public void receiveCall(){
+        System.out.println("전화왔습니다.");
+    }
+    public void flash() { System.out.println("전화기에 불이 켜졌습니다.");
+    }
+}
+
+public class EX5_6 {
+    public static void main(String[]arg){
+        samsungPhone Phone = new samsungPhone();
+        phone.printLogo();
+        phone.sendCall();
+        phone.receiveCall();
+        phone.flash();
+    }
+}
+```
+
+**객체속성**  
+    Object 클래스의 hashCode(), toString() 메소드는 객체의 해시 코드 값,객체를 나타내는 문자열 정보를 제공한다.  
+ **Wrapper 클래스**  
+    자바의 기본 타입을 정의한 8개의 클래스를 통칭  
+        -객체만 사용할 수 있는 컬렉션 등에 기본 타입의 값을 사용하기 위해 Wrapper 객체로 만들어 사용  
+
+**박싱과 언박싱**  
+    박싱  
+        -기본 타입의 값을 Wrapper객체로 변환하는것  
+    언박싱  
+        -Wrapper객체의 값을 기본 타입으로 변환하는것  
+    
+
 ## 4월 12일  
 **자바의 패키지 개념**  
 
