@@ -1,4 +1,7 @@
 # 김상혁 202130204
+
+  
+### 목차  
 [5월17일](#5월-17일)  
 [5월3일](#5월-03일)  
 [4월19일](#4월-19일)  
@@ -8,8 +11,16 @@
 [3월22일](#3월-22일)  
 [3월15일](#3월-15일)  
 [3월8일](#3월-8일)  
-
+  
 ## 김상혁 202130204  
+
+##
+  
+#####   ◆
+  
+        ■
+            □
+                ┗
 
 ## 5월 17일  
 
@@ -53,7 +64,7 @@
                 ┗align 컴포넌트를 정렬하는 방법 지정:왼쪽정렬 오른쪽 정렬 중앙정렬  
                 ┗hGap 좌우 두 컴포넌트 사이의 수평간격 픽셀단위 디폴트값은 5  
                 ┗vGap 상하 두 컴포넌트 사이의 수평간격 픽셀단위 디폴트값은 5  
-
+  
 ```java
 import javax.swing.*;
 import java.awt.*;
@@ -81,12 +92,130 @@ public class FlowLayoutEx extends JFrame {
 }
 
 ```
-
-#####   ◆
   
-        ■
-            □
-                ┗
+#####   ◆BorderLayout  
+  
+        ■배치방법  
+            □컨테아너 공간을 5구역으로 분활 배치  
+                ┗동 서 남 북 중앙  
+            □add(Component comp,int index)  
+        ■생성자  
+            □BorderLayout()  
+            □BorderLayout(int hGap,int vGap)  
+                ┗hGap 좌우 두 컴포넌트 사이의 수평간격 픽셀단위 디폴트값은 0  
+                ┗vGap 상하 두 컴포넌트 사이의 수평간격 픽셀단위 디폴트값은 0  
+  
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class BorderLayoutEx extends JFrame {
+    public BorderLayoutEx() {
+        setTitle("BorderLayout 예제");
+        setDefaultCloseOperation(JFrame.EXIt_ON_CLOASE);
+        Container contentPane = getContentPane();
+
+        contentPane.setLayout(new BorderLayout(30,20));
+
+        contentPane.add(new JButton("add"),BorderLayout.NORTH);
+        contentPane.add(new JButton("sub"),BorderLayout.SOUTH);
+        contentPane.add(new JButton("mul"),BorderLayout.EAST);
+        contentPane.add(new JButton("div"),BorderLayout.WEST);
+        contentPane.add(new JButton("Calculate"),BorderLayout.CENTER);
+        
+        setSize(300,200);
+        setVisible(true);
+    }
+    Public static void main(String[] args){
+        new BorderLayoutEx();
+    }
+}
+
+```
+
+#####   ◆GridLayout
+  
+        ■배치방법  
+            □컨테이너 공간을 동일한 사각형 격자로 분활하고 각 셀에 컴포넌트 하나씩 배치  
+                ┗생성자에 행수와 열수 지정  
+        ■생성자  
+            □GridLayout()  
+            □GridLayout(int rows,int cols)  
+            □GridLayout(int rows, int cols, int hGap, int vGap)  
+                ┗rows:그리드 행의 수, 디폴트값은 1  
+                ┗cols:그리드 열의 수, 디폴트값은 1  
+                ┗hGap 좌우 두 컴포넌트 사이의 수평간격 픽셀단위 디폴트값은 0  
+                ┗vGap 상하 두 컴포넌트 사이의 수평간격 픽셀단위 디폴트값은 0  
+
+```java
+import java.awt.*;
+import javax.swing.*;
+
+public class GridLayoutEX extends JFrame{
+    public GridLayoutEX(){
+        super("GridLayout 예제");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Container contentPane = getContentPane();
+
+        contentPane.setLayout(new GridLayout(4,3));
+
+        for(int i=0;i<10;i++){
+            String text = Integer.toString(i);
+            JButton button = new JButton(text);
+            contentPane.add(button);
+        }
+        setSize(500,200);
+        setVisible(true);
+    }
+    public static void main(String[]args){
+        new GridLayoutEX();
+    }
+}
+```
+    
+#####   ◆배치관리자 없는 컨테이너
+  
+        ■배치관리자가 필요 없는 컨테이너가 필요한 경우  
+            □컴포넌트의 크기나 위치를 개발자 임의로 결정하고자 하는 경우  
+            □게임 프로그램과 같이 시간이나 마우스,키보드 입력에 따라 컴포넌트들의 위칙와 크기가 수시로 변하는 경우  
+            □여러 컴포넌트들이 서로 겹치는 효과를 연출하고자 하는 경우  
+
+```java
+
+import javax.swing.*;
+import java.awt.*;
+
+public class NullContainerEX extends JFrame{
+    public NullContainerEX(){
+        setTitle("배치관리자 없이 절대 위치에 배치하는 예제");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Container cotentPahe = getContentPane();
+
+        contentPahe.setLayout(null);
+
+        JLabel la = new JLabel("Hello, Press Buttons!");
+        la.setLocation(130,50);
+        la.setSize(200,20);
+        contentPahe(la);
+
+        for(int i=1;i<=9;i++)
+        {
+            JButton b = new JButton(Integer.toString(i));
+            b.setLocation(i*15,i*15);
+            b.setSize(50,20);
+            contains.add(b);
+        }
+
+        setSize(300,200);
+        setVisible(true);
+    }
+    public static void main(String[]args){
+        new NullContainerEX();
+    }
+}
+
+```
+                
 
 
 ## 5월 03일  
