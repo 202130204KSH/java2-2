@@ -118,7 +118,8 @@ public class FlowLayoutEx extends JFrame {
 **컬렉션의 순차 검색을 위한 Iterator**  
   
     ■인터페이스  
-        ┗리스트 구조의 컬렉션에서 요소의 순차검색을 위한 인터페이스 ▷ Vector<E> ArrayList<E> LinkList<E>가 상속받는 인터페이스  
+        ┗리스트 구조의 컬렉션에서 요소의 순차검색을 위한 인터페이스  
+        ▷ Vector<E> ArrayList<E> LinkList<E>가 상속받는 인터페이스  
     ■Interator객체 얻어내기  
         ┗해당 컬렉션을 순차검색할 수 있는 Interator  
 
