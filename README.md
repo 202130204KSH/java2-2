@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 김상혁 202130204
 
 ## 김상혁 202130204  
@@ -46,10 +45,44 @@
                 ┗hGap 좌우 두 컴포넌트 사이의 수평간격 픽셀단위 디폴트값은 5  
                 ┗vGap 상하 두 컴포넌트 사이의 수평간격 픽셀단위 디폴트값은 5  
 
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class FlowLayoutEx extends JFrame {
+    public FlowLayoutEx() {
+        setTitle("FlowLayout 예제");
+        setDefaultCloseOperation(JFrame.EXIt_ON_CLOASE);
+        Container contentPane = getContentPane();
+
+        contentPane.setLayout(new FlowLayout(FlowLayout.Left,30,40));
+
+        contentPane.add(new JButton("add"));
+        contentPane.add(new JButton("sub"));
+        contentPane.add(new JButton("mul"));
+        contentPane.add(new JButton("div"));
+        contentPane.add(new JButton("Calculate"));
+        
+        setSize(300,200);
+        setVisible(true);
+    }
+    Public static void main(String[] args){
+        new FlowLayoutEx();
+    }
+}
+
+```
+
+#####   ◆
+  
+        ■
+            □
+                ┗
 
 
 ## 5월 03일  
 **컬렉션**  
+  
     ■요소라고 불리는 가변 개수의 객체들의 저장소  
             ┗객체들의 컨테이너라고도 불림  
             ┗요소의 개수에 따라 크기 자동 조절  
@@ -58,10 +91,10 @@
     ■다양한 객체들의 삽입 삭제 검색 등의 관리용이  
   
 **컬렉션의 특징**  
+  
     ■제너릭  
             ┗특정 타입만 다루지 않고 여러 종류의 타입으로 변신할 수 있도록 클래스나 메소드를 일반화 시키는 기법  
             ┗클래스나 인터페이스 이름에 <E> <K> <V>등 타입 매개변수 포함  
-  
     ■제너릭 컬렉션 사례:벡터<E>  
             ┗<E>에서 구체적인 타입을 주어 구체적인 타입만 다루는 벡터로 활용  
             ┗정수만 다루는 컬렉션 벡터  
@@ -73,27 +106,29 @@
     ■배열을 가변 크기로 다룰 수 있게 하는 컨테이너  
             ┗배열의 길이 제한 극복  
             ┗요소의 개수가 넘치면 자동으로 길이 조절  
-
     ■요소 객체들을 삽입 삭제 검색하는 컨테이너  
             ┗삽입 삭제에 따라 자동으로 요소의 위치 조정  
   
 **ArrayList**  
+
     ■가변크기 배열을 구현한 클래스  
         ┗스레드간 동기화를 지원하지 않음  
     ■ArrayList는 인덱스 요소로 접근하도록 지원함  
 
 **컬렉션의 순차 검색을 위한 Iterator**  
+  
     ■인터페이스  
         ┗리스트 구조의 컬렉션에서 요소의 순차검색을 위한 인터페이스 ▷ Vector<E> ArrayList<E> LinkList<E>가 상속받는 인터페이스  
     ■Interator객체 얻어내기  
         ┗해당 컬렉션을 순차검색할 수 있는 Interator  
 
 **HashMap<K,V>**  
+
     ■키(Key),값(Value)의 쌍으로 구성된 요소를 다루는 컬렉션  
         ┗K:키로 사용할 요소의 타입  
         ┗V:값으로 사용할 요소의 타입  
         ┗키와 값이 한쌍으로 삽입  
-        ┗값을 검색하기 위해서는 반ㄷ느시 키를 이용  
+        ┗값을 검색하기 위해서는 반드시 키를 이용  
     ■삽입 및 검색이 빠른 특징  
         ┗요소 삽입:put()메소드  
         ┗요소 검색:get()메소드  
