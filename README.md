@@ -73,11 +73,53 @@
                 ┗Object 타입으로 리턴하므로 캐스팅하여 사용  
                 ┗모든 이벤트 객채에 대해 적용  
   
+#####   ◆리스너 인터페이스  
+  
+        ■이벤트 리스너  
+            □이벤트를 처리하는 자바 프로그램 코드,클래스로 작성  
+        ■자바는 다양한 리스너 인터페이스를 제공  
+            □EX:ActionListener  
+            □EX:MyActionListener  
+  
+#####   ◆이벤트 리스너 작성 과정 사례
+  
+        ■이벤트와 이벤트 리스너 선택  
+            □버튼 클릭을 처리하고자 하는 경우  
+                ┗이벤트:Action 이벤트, 이벤트 리스너 ActionListener  
+        ■이벤트 리스너 클래스 작성:ActionListener 인터페이스 구현  
+  
+```java
+class Myactionlisterner implements ActionListener {
+    public void actionPerFormen(ActionEvent e){
+        JButton b=(JButton)e.getSource();
+        if(b.getText().equals("Action"))
+            b.setText("액션");
+        else
+            b.setText("action");
+    }
+}
+```  
+  
+#####   ◆이벤트리스너 작성 방법  
+
+        ■3가지 방법  
+            □독립 클래스로 작성  
+                ┗이벤트 리스너를 완전한 클래스로 작성  
+                ┗이벤트 리스너를 여러 곳에서 사용할 때 적합  
+            □내부 클래스(inner class)로 작성  
+                ┗클래스 안에 멤버처럼 클래스 작성  
+                ┗이벤트 리스너를 특정 클래스에서만 사용할 때 적합  
+            □익명 클래스(anonymous class)로 작성  
+                ┗클래스의 이름 없이 간단히 리스너 작성  
+                ┗클래스 조차 만들 필요 없이 리스너 코드가 간단한 경우에 적합하다  
+  
 #####   ◆
   
         ■
             □
                 ┗
+
+
 
 
 ## 5월 17일  
@@ -418,7 +460,8 @@ public class NullContainerEX extends JFrame{
     ■인터페이스 객체는 생성할 수 없다  
     ■인터페이스 상속  
         □인터페이스는 다른 인터페이스를 상속할 수 있다.  
-        □상속시 extends 키워드를 이용하며 PhoneInterface를 상속받아 MobilePhoneInterface인터페이스를 작성한 사례이다.  
+        □상속시 extends 키워드를 이용하며  
+        PhoneInterface를 상속받아 MobilePhoneInterface인터페이스를 작성한 사례이다.  
 
     ```java
     interface MobilePhoneInterface extends PhoneInterface{
@@ -500,7 +543,8 @@ public class EX5_6 {
 
 #####   ◆객체속성  
   
-        ■Object 클래스의 hashCode(), toString() 메소드는 객체의 해시 코드 값,객체를 나타내는 문자열 정보를 제공한다.  
+        ■Object 클래스의 hashCode(), toString() 메소드는  
+        객체의 해시 코드 값,객체를 나타내는 문자열 정보를 제공한다.  
   
 #####   ◆Wrapper 클래스  
   
