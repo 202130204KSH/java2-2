@@ -37,9 +37,10 @@
         ■JComponent  
             □스윙 컴포넌트는 모두 상속받는 슈퍼클래스  
             □스윙 컴포넌트들이 상속받는 공통 메소드와 상수 구현  
-    
-        ■JComponent의 주요 메소드 사례  
-            □컴포넌트의 묘양과 관련된 메소드  
+  
+#####   ◆JComponent의 주요 메소드 사례  
+  
+            □컴포넌트의 모양과 관련된 메소드  
 ```java
 void setForeground(Color)
 void setBackground(Color)
