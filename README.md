@@ -40,21 +40,21 @@
     
         ■JComponent의 주요 메소드 사례  
             □컴포넌트의 묘양과 관련된 메소드  
-```java  
+```java
 void setForeground(Color)
 void setBackground(Color)
 void setOpaque(boolean)
 void setFont(Font)
 Font getFont()
-```  
+```
             □컴포넌트의 상태와 관련된 메소드  
-```java  
+```java
 void setEnabled(boolean)
 void setVisible(boolean)
 boolean isVisible()
-```  
+```
             □컴포넌트의 위치와 크기에 관련된 메소드
-```java  
+```java
 int getwidth()
 int getHeight()
 int getX()
@@ -62,7 +62,7 @@ int getY()
 Point getLocationOnscreen()
 void setLocation(int,int)
 void setSize(int,int)
-```  
+```
             □컨테이너를 위한 메소드
 ```java  
 Component add(Component)
@@ -71,7 +71,7 @@ void removeALL()
 Component[] getComponent()
 Container getParent()
 Container getTopLevelAncestor()
-```  
+```
             ▶예제  
 ```java
 import java.awt.*;
