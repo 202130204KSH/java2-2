@@ -2,6 +2,7 @@
 
   
 ### 목차  
+[5월 31일](#5월-31일)  
 [5월 24일](#5월-24일)  
 [5월17일](#5월-17일)  
 [5월3일](#5월-03일)  
@@ -15,14 +16,108 @@
   
 ## 김상혁 202130204  
 
-
 #####   ◆
   
         ■
             □
                 ┗
+  
+## 5월 31일  
+  
+#####   ◆자바의 GUI 프로그래밍 방법
+  
+        ■컴포넌트 기반의 GUI 프로그래밍  
+            □스윙 컴포넌트를 이용하여 쉽게 GUI를 구축  
+            □자바에서 제공하는 컴포넌트의 한계를 벗어나지 못함  
+        ■그래픽 기반 GUI 프로그래밍  
+            □그래픽을 이용하여 GUI구축  
+  
+#####   ◆스윙 컴포넌트의 공통 메소드 JComponent의 메소드  
+  
+        ■JComponent  
+            □스윙 컴포넌트는 모두 상속받는 슈퍼클래스  
+            □스윙 컴포넌트들이 상속받는 공통 메소드와 상수 구현  
+    
+        ■JComponent의 주요 메소드 사례  
+            □컴포넌트의 묘양과 관련된 메소드  
+```java  
+void setForeground(Color)
+void setBackground(Color)
+void setOpaque(boolean)
+void setFont(Font)
+Font getFont()
+```  
+            □컴포넌트의 상태와 관련된 메소드  
+```java  
+void setEnabled(boolean)
+void setVisible(boolean)
+boolean isVisible()
+```  
+            □컴포넌트의 위치와 크기에 관련된 메소드
+```java  
+int getwidth()
+int getHeight()
+int getX()
+int getY()
+Point getLocationOnscreen()
+void setLocation(int,int)
+void setSize(int,int)
+```  
+            □컨테이너를 위한 메소드
+```java  
+Component add(Component)
+void remove(Component)
+void removeALL()
+Component[] getComponent()
+Container getParent()
+Container getTopLevelAncestor()
+```  
+            ▶예제  
+```java
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-## 5월 24일
+
+public class JComponentEx extends JFrame{
+    public JComponentEx() {
+    super("JComponent예제");
+    Container c = getContentPane();
+    c.setLayout(new FlowLayout());
+        
+    JButton b1 = new JButton("Magenta/Yellow Button");
+    JButton b2 = new JButton("Disabled Button");
+    JButton b3 = new JButton("getX(),getY()");
+
+    b1.setBackground(Color.YELLOW);
+    b1.setForeground(Color.MAGENTA);
+    b1.setFont(new Font("Arial", Font.ITALIC,20));
+    b2.setEnabled(false);
+    b3.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e){
+            JButton b = (JButton)e.getSource();
+            setTitle(b.getX()+","+b.getY());
+        }
+    });
+
+    c.add(b1); c.add(b2); c.add(b3);
+
+    setSize(260,200); setVisible(true);
+
+    }
+    public static void main(String[] args) {
+        new JComponentEx();
+    }     
+}
+```
+  
+#####   ◆
+  
+        ■
+            □
+                ┗
+  
+## 5월 24일  
   
 #####   ◆이벤트 기반 프로그래밍  
   
@@ -404,33 +499,34 @@ public class NullContainerEX extends JFrame{
 
 
 ## 5월 03일  
-**컬렉션**  
+
+#####   ◆컬렉션  
   
     ■요소라고 불리는 가변 개수의 객체들의 저장소  
-            ┗객체들의 컨테이너라고도 불림  
-            ┗요소의 개수에 따라 크기 자동 조절  
-            ┗요소의 삽입 삭제에 따른 요소의 위치 자동이동  
+        □객체들의 컨테이너라고도 불림  
+        □요소의 개수에 따라 크기 자동 조절  
+        □요소의 삽입 삭제에 따른 요소의 위치 자동이동  
     ■고정 크기의 배열을 다루는 어려움 해소  
     ■다양한 객체들의 삽입 삭제 검색 등의 관리용이  
   
-**컬렉션의 특징**  
+#####   ◆컬렉션의 특징  
   
     ■제너릭  
-            ┗특정 타입만 다루지 않고 여러 종류의 타입으로 변신할 수 있도록 클래스나 메소드를 일반화 시키는 기법  
-            ┗클래스나 인터페이스 이름에 <E> <K> <V>등 타입 매개변수 포함  
+        □특정 타입만 다루지 않고 여러 종류의 타입으로 변신할 수 있도록 클래스나 메소드를 일반화 시키는 기법  
+        □클래스나 인터페이스 이름에 <E> <K> <V>등 타입 매개변수 포함 
     ■제너릭 컬렉션 사례:벡터<E>  
-            ┗<E>에서 구체적인 타입을 주어 구체적인 타입만 다루는 벡터로 활용  
-            ┗정수만 다루는 컬렉션 벡터  
-            ┗문자열만 다루는 컬렉션 벡터  
-      
-**벡터의 특성**  
-
-    ■<E>에서 사용할 요소의 특정 타입으로 구체화  
-    ■배열을 가변 크기로 다룰 수 있게 하는 컨테이너  
-            ┗배열의 길이 제한 극복  
-            ┗요소의 개수가 넘치면 자동으로 길이 조절  
-    ■요소 객체들을 삽입 삭제 검색하는 컨테이너  
-            ┗삽입 삭제에 따라 자동으로 요소의 위치 조정  
+        □<E>에서 구체적인 타입을 주어 구체적인 타입만 다루는 벡터로 활용  
+        □정수만 다루는 컬렉션 벡터  
+        □문자열만 다루는 컬렉션 벡터  
+  
+#####   ◆벡터의 특징  
+  
+        ■<E>에서 사용할 요소의 특정 타입으로 구체화  
+        ■배열을 가변 크기로 다룰 수 있게 하는 컨테이너  
+            □배열의 길이 제한 극복  
+            □요소의 개수가 넘치면 자동으로 길이 조절  
+        ■요소 객체들을 삽입 삭제 검색하는 컨테이너  
+            □삽입 삭제에 따라 자동으로 요소의 위치 조정  
   
 **ArrayList**  
 
@@ -498,15 +594,9 @@ public class NullContainerEX extends JFrame{
         ┗스윙 프레임에 붙은 디폴트 컨텐트팬 알아내기  
         ┗컨텐트 팬에 컴포넌트 붙이기  
         ┗컨텐트 팬 변경  
-
-## 4월 19일
-
-#####   ◆
   
-        ■
-            □
-                ┗
-
+## 4월 19일  
+  
 #####   ◆메소드 오버라이딩  
   
         ■서브 클래스에서 슈퍼 클래스에 선언된 메소드를 중복 작성하여 슈퍼클래스에 작성된 메소드를 무력화시키고  
@@ -533,9 +623,9 @@ public class NullContainerEX extends JFrame{
             □상속을 위한 슈퍼 클래스로 활용  
             □서브 클래스에서 추상 메소드 구현  
             □다향성 실현  
-
+  
 #####   ◆자바 인터페이스  
-
+  
     ■상수는 public static속성이며 속성은 생략 가능하다  
     ■추상 메소드는 속성이 public abstract로 정해져 있으며 생략 가능하다.
     ■default메소드의 접근지정은 public으로 고정되어있으며 생략 가능하다  
@@ -547,7 +637,7 @@ public class NullContainerEX extends JFrame{
         □인터페이스는 다른 인터페이스를 상속할 수 있다.  
         □상속시 extends 키워드를 이용하며  
         PhoneInterface를 상속받아 MobilePhoneInterface인터페이스를 작성한 사례이다.  
-
+  
     ```java
     interface MobilePhoneInterface extends PhoneInterface{
         void sendSMS();
@@ -625,7 +715,7 @@ public class EX5_6 {
     }
 }
 ```
-
+  
 #####   ◆객체속성  
   
         ■Object 클래스의 hashCode(), toString() 메소드는  
