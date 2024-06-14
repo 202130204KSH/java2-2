@@ -724,13 +724,13 @@ public class NullContainerEX extends JFrame{
         ■요소 객체들을 삽입 삭제 검색하는 컨테이너  
             □삽입 삭제에 따라 자동으로 요소의 위치 조정  
   
-**ArrayList**  
-
+#####   ◆ArrayList  
+  
     ■가변크기 배열을 구현한 클래스  
         ┗스레드간 동기화를 지원하지 않음  
     ■ArrayList는 인덱스 요소로 접근하도록 지원함  
 
-**컬렉션의 순차 검색을 위한 Iterator**  
+#####   ◆컬렉션의 순차 검색을 위한 Iterator  
   
     ■인터페이스  
         ┗리스트 구조의 컬렉션에서 요소의 순차검색을 위한 인터페이스  
@@ -738,8 +738,8 @@ public class NullContainerEX extends JFrame{
     ■Interator객체 얻어내기  
         ┗해당 컬렉션을 순차검색할 수 있는 Interator  
 
-**HashMap<K,V>**  
-
+#####   ◆HashMap<K,V>  
+  
     ■키(Key),값(Value)의 쌍으로 구성된 요소를 다루는 컬렉션  
         ┗K:키로 사용할 요소의 타입  
         ┗V:값으로 사용할 요소의 타입  
@@ -749,8 +749,9 @@ public class NullContainerEX extends JFrame{
         ┗요소 삽입:put()메소드  
         ┗요소 검색:get()메소드  
     ■HashMap<String,String>생성,요소 삽입,요소 검색  
-
-**자바 GUI**  
+  
+#####   ◆자바 GUI  
+  
     ■GUI  
         ┗사용자가 관리하게 입출할 수 있도록 그래픽으로 화면을 구성하고 마우스나 키보드로 입력받을 수 있도록 지원하는 사용자 인터페이스  
     ■자바언어에서 GUI응용 프로그램 작성  
@@ -768,11 +769,12 @@ public class NullContainerEX extends JFrame{
         ┗순수 자바 언어로 구현  
         ┗스윙 컴포넌트는 경량 컴포넌트  
           
-**스윙 GUI 만들기**  
+#####   ◆스윙 GUI 만들기  
+  
     ■스윙 프레임 만들기  
     ■main()메소드 지정  
     ■스윙 프레임에 스윙 컴포넌트 붙이기  
-
+  
     ■스윙 프레임:모든 스윙 컴포넌트를 담는 최상위 컨테이너  
         ┗JFrame을 상속받아 구현  
         ┗컴포넌트들은 화면에 보이려면 스윙 프레임에 부착되어 있어야 함  
@@ -782,7 +784,8 @@ public class NullContainerEX extends JFrame{
         ┗메뉴바-메뉴들이 부착되는 공간  
         ┗컨텐츠팬-GUI컴포넌트들이 부착되는 공간  
     
-**프레임에 컴포넌트 붙이기**  
+#####   ◆프레임에 컴포넌트 붙이기  
+  
     ■타이틀 달기  
         ┗super()나 setTitle()이용  
     ■컨텐트팬에 컴포넌트 달기
